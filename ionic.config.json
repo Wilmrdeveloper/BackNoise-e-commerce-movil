@@ -1,0 +1,7 @@
+{
+  "name": "BlackNoise-ecommerce",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
