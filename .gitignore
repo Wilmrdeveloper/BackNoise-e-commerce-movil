@@ -68,3 +68,16 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Cordova
+/platforms/
+/plugins/
+/www/
+
+# Android build outputs (pesados, no deben ir al repo)
+*.apk
+*.aab
+*.keystore
+
+# Angular cache
+/.angular/

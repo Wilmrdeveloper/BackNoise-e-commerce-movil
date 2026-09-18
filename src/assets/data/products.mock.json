@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Chaqueta Oversized Negra",
+        "price": 89.99,
+        "image": "https://picsum.photos/seed/jacket/400/400",
+        "description": "Chaqueta unisex de corte oversized, tela resistente al agua."
+    },
+    {
+        "id": 2,
+        "name": "Camiseta Básica BlackNoise",
+        "price": 24.99,
+        "image": "https://picsum.photos/seed/tshirt/400/400",
+        "description": "Camiseta 100% algodón, corte regular, edición limitada."
+    },
+    {
+        "id": 3,
+        "name": "Pantalón Cargo Gris",
+        "price": 64.99,
+        "image": "https://picsum.photos/seed/pants/400/400",
+        "description": "Pantalón cargo con bolsillos laterales, tejido resistente."
+    }
+]
