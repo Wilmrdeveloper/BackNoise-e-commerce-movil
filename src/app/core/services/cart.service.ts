@@ -42,4 +42,18 @@ export class CartService {
     clearCart(): void {
         this.itemsSubject.next([]);
     }
+
+    increaseQuantity(productId: number): void {
+        const items = this.itemsSubject.value.map(item =>
+            item.product.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+        );
+        this.itemsSubject.next(items);
+    }
+
+    decreaseQuantity(productId: number): void {
+        const items = this.itemsSubject.value
+            .map(item => item.product.id === productId ? { ...item, quantity: item.quantity - 1 } : item)
+            .filter(item => item.quantity > 0);
+        this.itemsSubject.next(items);
+    }
 }

@@ -1,7 +1,120 @@
-ion-card {
-    img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-    }
+.product-card {
+    margin: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.95), transparent);
+    pointer-events: none;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 2;
+}
+
+.favorite-btn:active {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.favorite-btn ion-icon {
+    font-size: 18px;
+    color: #111;
+}
+.card-body {
+    padding: 14px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: #fff;
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 12px 0;
+}
+
+.buy-btn {
+    margin-top: auto;
+    width: 100%;
+    height: 38px;
+    border-radius: 50px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.buy-btn:active {
+    background-color: #333;
+    transform: scale(0.97);
 }

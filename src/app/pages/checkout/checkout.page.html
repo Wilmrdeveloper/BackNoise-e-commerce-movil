@@ -1,0 +1,36 @@
+<div class="checkout-header animate-in">
+  <app-back-button fallbackRoute="/cart"></app-back-button>
+  <h1>Pagar</h1>
+  <div class="spacer"></div>
+</div>
+
+<ion-content class="ion-padding checkout-page">
+
+  <div class="form-section animate-in delay-1">
+    <h3>Dirección de envío</h3>
+    <div class="input-wrapper">
+      <ion-input placeholder="Calle, número, ciudad" [(ngModel)]="address"></ion-input>
+    </div>
+
+    <h3>Teléfono</h3>
+    <div class="input-wrapper">
+      <ion-input type="tel" placeholder="Número de celular" [(ngModel)]="phone"></ion-input>
+    </div>
+  </div>
+
+  <div class="form-section animate-in delay-2">
+    <h3>Método de pago</h3>
+    <div class="payment-row">
+      <button *ngFor="let method of paymentMethods" class="payment-chip"
+        [class.selected]="selectedPayment === method.key" (click)="selectPayment(method.key)">
+        <ion-icon [name]="method.icon"></ion-icon>
+        <span>{{ method.label }}</span>
+      </button>
+    </div>
+  </div>
+
+  <button class="confirm-button animate-in delay-2" (click)="confirmPurchase()">
+    Confirmar compra
+  </button>
+
+</ion-content>

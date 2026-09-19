@@ -1,0 +1,45 @@
+<ion-content class="ion-padding home-page" [fullscreen]="true">
+
+  <div class="home-header animate-in">
+    <h1 class="brand-title">BlackNoise</h1>
+    <button class="search-toggle" (click)="toggleSearch()" [class.active]="isSearchOpen">
+      <ion-icon name="search-outline"></ion-icon>
+    </button>
+  </div>
+
+  <div class="search-bar" *ngIf="isSearchOpen">
+    <ion-input placeholder="Buscar favoritos, carrito, perfil, pantalones..." [(ngModel)]="searchTerm"
+      (ionInput)="onSearchChange()">
+    </ion-input>
+
+    <ion-list *ngIf="searchSuggestions.length > 0" class="suggestions">
+      <ion-item *ngFor="let suggestion of searchSuggestions" button (click)="goToQuickAction(suggestion)">
+        <ion-icon name="arrow-forward-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-capitalize">{{ suggestion.label }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="category-row animate-in delay-1">
+    <button *ngFor="let cat of categories" class="category-item" [class.active]="activeCategory === cat.key"
+      (click)="selectCategory(cat.key)">
+      <ion-icon
+        [name]="cat.key === 'pantalones' ? 'body-outline' : cat.key === 'camisetas' ? 'shirt-outline' : 'snow-outline'"></ion-icon>
+      <span>{{ cat.label }}</span>
+    </button>
+  </div>
+
+  <ng-container *ngIf="(filteredProducts$ | async) as filteredProducts">
+    <div class="catalog-grid animate-in delay-2">
+      <app-product-card *ngFor="let product of filteredProducts" [product]="product">
+      </app-product-card>
+    </div>
+
+    <div class="empty-state animate-in delay-2" *ngIf="filteredProducts.length === 0">
+      <p>No se encontraron productos.</p>
+    </div>
+  </ng-container>
+
+</ion-content>
+
+<app-bottom-nav></app-bottom-nav>

@@ -5,8 +5,12 @@ import { AuthGuard } from './core/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'intro',
     pathMatch: 'full'
+  },
+  {
+    path: 'intro',
+    loadChildren: () => import('./pages/intro/intro.module').then(m => m.IntroPageModule)
   },
   {
     path: 'login',
@@ -17,12 +21,33 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
   },
   {
-    path: 'catalog',
-    loadChildren: () => import('./pages/catalog/catalog.module').then(m => m.CatalogPageModule)
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'product/:id',
+    loadChildren: () => import('./pages/product-detail/product-detail.module').then(m => m.ProductDetailPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'cart',
     loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./pages/checkout/checkout.module').then(m => m.CheckoutPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./pages/favorites/favorites.module').then(m => m.FavoritesPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule),
     canActivate: [AuthGuard]
   },
   {

@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { CartItem } from '../../core/models/cart-item.model';
 import { CartService } from '../../core/services/cart.service';
-import { OrderService } from '../../core/services/order.service';
-import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -18,8 +15,6 @@ export class CartPage {
 
   constructor(
     private cartService: CartService,
-    private orderService: OrderService,
-    private authService: AuthService,
     private router: Router,
     private alertController: AlertController
   ) { }
@@ -32,25 +27,26 @@ export class CartPage {
     this.cartService.removeFromCart(productId);
   }
 
-  async checkout() {
+  goToCheckout() {
     const items = this.cartService.getItems();
 
     if (items.length === 0) {
-      await this.showAlert('Carrito vacío', 'Agrega productos antes de finalizar la compra.');
+      this.showAlert(
+        'Carrito vacío',
+        'Agrega productos antes de continuar.'
+      );
       return;
     }
 
-    const user = this.authService.getCurrentUser();
-    if (!user) {
-      this.router.navigateByUrl('/login');
-      return;
-    }
+    this.router.navigateByUrl('/checkout');
+  }
 
-    const total = this.cartService.getTotal();
-    const order = this.orderService.createOrder(items, total, user.email);
+  increase(productId: number) {
+    this.cartService.increaseQuantity(productId);
+  }
 
-    this.cartService.clearCart();
-    this.router.navigate(['/order-confirmation'], { state: { orderId: order.id } });
+  decrease(productId: number) {
+    this.cartService.decreaseQuantity(productId);
   }
 
   private async showAlert(header: string, message: string) {
@@ -59,6 +55,7 @@ export class CartPage {
       message,
       buttons: ['OK']
     });
+
     await alert.present();
   }
 }

@@ -2,22 +2,124 @@
     {
         "id": 1,
         "name": "Chaqueta Oversized Negra",
-        "price": 89.99,
-        "image": "https://picsum.photos/seed/jacket/400/400",
-        "description": "Chaqueta unisex de corte oversized, tela resistente al agua."
+        "price": 249900,
+        "image": "assets/images/products/chaqueta-oversized-negra.jpg",
+        "description": "Chaqueta unisex de corte oversized, tela resistente al agua.",
+        "category": "chaquetas",
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
     },
     {
         "id": 2,
-        "name": "Camiseta Básica BlackNoise",
-        "price": 24.99,
-        "image": "https://picsum.photos/seed/tshirt/400/400",
-        "description": "Camiseta 100% algodón, corte regular, edición limitada."
+        "name": "Chaqueta Denim Clásica",
+        "price": 219900,
+        "image": "assets/images/products/chaqueta-denim-clasica.jpg",
+        "description": "Chaqueta de mezclilla, corte regular, doble bolsillo frontal.",
+        "category": "chaquetas",
+        "sizes": [
+            "S",
+            "M",
+            "L"
+        ]
     },
     {
         "id": 3,
+        "name": "Chaqueta Bomber Gris",
+        "price": 269900,
+        "image": "assets/images/products/chaqueta-bomber-gris.jpg",
+        "description": "Chaqueta bomber acolchada, puños y cuello elástico.",
+        "category": "chaquetas",
+        "sizes": [
+            "M",
+            "L",
+            "XL"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Camiseta Básica BlackNoise",
+        "price": 59900,
+        "image": "assets/images/products/camiseta-basica-blacknoise.jpg",
+        "description": "Camiseta 100% algodón, corte regular, edición limitada.",
+        "category": "camisetas",
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Camiseta Estampada Urban",
+        "price": 74900,
+        "image": "assets/images/products/camiseta-estampada-urban.jpg",
+        "description": "Camiseta con estampado gráfico, algodón premium.",
+        "category": "camisetas",
+        "sizes": [
+            "S",
+            "M",
+            "L"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Camiseta Oversized Blanca",
+        "price": 54900,
+        "image": "assets/images/products/camiseta-oversized-blanca.jpg",
+        "description": "Camiseta oversized de algodón peinado, cuello redondo.",
+        "category": "camisetas",
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
+    },
+    {
+        "id": 7,
         "name": "Pantalón Cargo Gris",
-        "price": 64.99,
-        "image": "https://picsum.photos/seed/pants/400/400",
-        "description": "Pantalón cargo con bolsillos laterales, tejido resistente."
+        "price": 159900,
+        "image": "assets/images/products/pantalon-cargo-gris.jpg",
+        "description": "Pantalón cargo con bolsillos laterales, tejido resistente.",
+        "category": "pantalones",
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Pantalón Jogger Negro",
+        "price": 129900,
+        "image": "assets/images/products/pantalon-jogger-negro.jpg",
+        "description": "Jogger deportivo, puños elásticos, tejido suave.",
+        "category": "pantalones",
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Pantalón Denim Recto",
+        "price": 149900,
+        "image": "assets/images/products/pantalon-denim-recto.jpg",
+        "description": "Jean corte recto, lavado clásico, cinco bolsillos.",
+        "category": "pantalones",
+        "sizes": [
+            "S",
+            "M",
+            "L"
+        ]
     }
 ]

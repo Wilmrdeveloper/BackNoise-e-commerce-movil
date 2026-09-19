@@ -1,0 +1,51 @@
+<div class="profile-header">
+  <app-back-button fallbackRoute="/home"></app-back-button>
+  <h1>Perfil</h1>
+  <div class="spacer"></div>
+</div>
+
+<ion-content class="ion-padding">
+
+  <div class="user-card" *ngIf="user">
+    <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
+    <h2>{{ user.name }}</h2>
+    <p>{{ user.email }}</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-number">{{ ordersCount }}</span>
+      <span class="stat-label">Pedidos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">{{ favoritesCount }}</span>
+      <span class="stat-label">Favoritos</span>
+    </div>
+  </div>
+
+  <ion-list class="options-list">
+    <ion-item button routerLink="/favorites">
+      <ion-icon name="heart-outline" slot="start"></ion-icon>
+      <ion-label>Mis favoritos</ion-label>
+    </ion-item>
+    <ion-item button routerLink="/cart">
+      <ion-icon name="cart-outline" slot="start"></ion-icon>
+      <ion-label>Mi carrito</ion-label>
+    </ion-item>
+    <ion-item button>
+      <ion-icon name="notifications-outline" slot="start"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
+    </ion-item>
+    <ion-item button>
+      <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+      <ion-label>Ayuda y soporte</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" fill="outline" color="danger" class="logout-button" (click)="confirmLogout()">
+    Cerrar sesión
+  </ion-button>
+
+</ion-content>
+
+<app-bottom-nav></app-bottom-nav>

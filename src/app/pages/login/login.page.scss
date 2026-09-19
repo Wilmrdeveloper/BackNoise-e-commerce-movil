@@ -1,14 +1,156 @@
-.login-container {
-    max-width: 400px;
-    margin: 0 auto;
+ion-content {
+    --background: #f4f4f6;
+}
 
-    h2 {
-        text-align: center;
-        margin-bottom: 24px;
+.login-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.top-section {
+    height: 38%;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
+}
+
+.brand {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    z-index: 2;
+    animation: fadeInDown 0.7s ease both;
+}
+
+.form-card {
+    background: #ffffff;
+    border-radius: 32px 32px 0 0;
+    margin-top: -40px;
+    /* se superpone un poco a la parte negra */
+    padding: 40px 28px 48px;
+    flex: 1;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    position: relative;
+    z-index: 5;
+}
+
+.form-card h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 32px 0;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+.custom-input {
+    --background: #f5f5f7;
+    --padding-start: 18px;
+    --padding-end: 18px;
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+    --border-radius: 16px;
+    --highlight-color: transparent;
+    --color: #111;
+    --placeholder-color: #aaa;
+    font-size: 15px;
+    border: 1.5px solid transparent;
+    transition: all 0.25s ease;
+}
+
+.custom-input.has-focus,
+.custom-input:focus-within {
+    --background: #ffffff;
+    border-color: #111;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.error {
+    font-size: 12px;
+    color: #e11d48;
+    margin-top: 6px;
+    margin-left: 4px;
+    min-height: 18px;
+}
+
+.main-button {
+    --background: #111111;
+    --background-activated: #000000;
+    --background-focused: #000000;
+    --color: #ffffff;
+    --border-radius: 16px;
+    --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    height: 52px;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-button:active {
+    transform: scale(0.98);
+}
+
+.footer-link {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer-link strong {
+    color: #111;
+    font-weight: 600;
+}
+
+.footer-link:active {
+    color: #111;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
     }
 
-    .error-text {
-        font-size: 12px;
-        margin: 4px 0 8px 16px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

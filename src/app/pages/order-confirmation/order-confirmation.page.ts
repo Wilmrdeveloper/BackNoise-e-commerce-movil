@@ -13,12 +13,27 @@ export class OrderConfirmationPage {
 
   order: Order | null = null;
 
+  address = '';
+  phone = '';
+  payment = '';
+
   constructor(
     private router: Router,
     private orderService: OrderService
   ) {
     const navigation = this.router.getCurrentNavigation();
+
     const orderId = (navigation?.extras.state as { orderId?: string })?.orderId;
+
+    const state = navigation?.extras.state as {
+      address?: string;
+      phone?: string;
+      payment?: string;
+    };
+
+    this.address = state?.address ?? '';
+    this.phone = state?.phone ?? '';
+    this.payment = state?.payment ?? '';
 
     const orders = this.orderService.getOrders();
 
@@ -26,14 +41,12 @@ export class OrderConfirmationPage {
       this.order = orders.find(o => o.id === orderId) ?? null;
     }
 
-    // Fallback: si no hay orderId en el state (ej. recarga de página),
-    // muestra el pedido más reciente guardado.
     if (!this.order && orders.length > 0) {
       this.order = orders[orders.length - 1];
     }
   }
 
   goToCatalog() {
-    this.router.navigateByUrl('/catalog');
+    this.router.navigateByUrl('/home');
   }
 }

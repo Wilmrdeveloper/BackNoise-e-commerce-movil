@@ -1,50 +1,58 @@
-<ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>Crear cuenta</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" [scrollY]="false">
+  <div class="register-page">
 
-<ion-content class="ion-padding">
-  <div class="register-container">
-    <h2>Regístrate</h2>
+    <div class="top-section">
+      <button class="back-button" (click)="goToLogin()" aria-label="Volver">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </button>
 
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="brand">BlackNoise</div>
+    </div>
 
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text" formControlName="name"></ion-input>
-      </ion-item>
-      <ion-text color="danger" *ngIf="name?.touched && name?.invalid">
-        <p class="error-text" *ngIf="name?.errors?.['required']">El nombre es obligatorio.</p>
-        <p class="error-text" *ngIf="name?.errors?.['minlength']">Mínimo 2 caracteres.</p>
-      </ion-text>
+    <div class="form-card">
+      <h1>Crear cuenta</h1>
 
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
-      </ion-item>
-      <ion-text color="danger" *ngIf="email?.touched && email?.invalid">
-        <p class="error-text" *ngIf="email?.errors?.['required']">El email es obligatorio.</p>
-        <p class="error-text" *ngIf="email?.errors?.['email']">Ingresa un email válido.</p>
-      </ion-text>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
-      <ion-text color="danger" *ngIf="password?.touched && password?.invalid">
-        <p class="error-text" *ngIf="password?.errors?.['required']">La contraseña es obligatoria.</p>
-        <p class="error-text" *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres.</p>
-      </ion-text>
+        <div class="input-group">
+          <label>Nombre</label>
+          <ion-input type="text" formControlName="name" placeholder="Tu nombre" class="custom-input">
+          </ion-input>
+          <div class="error" *ngIf="name?.touched && name?.invalid">
+            <span *ngIf="name?.errors?.['required']">El nombre es obligatorio</span>
+            <span *ngIf="name?.errors?.['minlength']">Mínimo 2 caracteres</span>
+          </div>
+        </div>
 
-      <ion-button expand="block" type="submit" class="ion-margin-top">
-        Registrarme
-      </ion-button>
+        <div class="input-group">
+          <label>Email</label>
+          <ion-input type="email" formControlName="email" placeholder="tu@email.com" class="custom-input">
+          </ion-input>
+          <div class="error" *ngIf="email?.touched && email?.invalid">
+            <span *ngIf="email?.errors?.['required']">El email es obligatorio</span>
+            <span *ngIf="email?.errors?.['email']">Ingresa un email válido</span>
+          </div>
+        </div>
 
-    </form>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <ion-input type="password" formControlName="password" placeholder="••••••••" class="custom-input">
+          </ion-input>
+          <div class="error" *ngIf="password?.touched && password?.invalid">
+            <span *ngIf="password?.errors?.['required']">La contraseña es obligatoria</span>
+            <span *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres</span>
+          </div>
+        </div>
 
-    <ion-button expand="block" fill="clear" (click)="goToLogin()">
-      ¿Ya tienes cuenta? Inicia sesión
-    </ion-button>
+        <ion-button expand="block" type="submit" class="main-button">
+          Registrarme
+        </ion-button>
+      </form>
+
+      <div class="footer-link" (click)="goToLogin()">
+        ¿Ya tienes cuenta? <strong>Inicia sesión</strong>
+      </div>
+    </div>
+
   </div>
 </ion-content>

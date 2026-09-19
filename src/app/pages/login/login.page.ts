@@ -44,7 +44,7 @@ export class LoginPage {
     const result = this.authService.login(email, password);
 
     if (result.success) {
-      this.router.navigateByUrl('/catalog');
+      this.router.navigateByUrl('/home');
     } else {
       await this.showAlert(result.message);
     }

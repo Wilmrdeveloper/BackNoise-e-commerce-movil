@@ -6,15 +6,10 @@ import { RouterModule } from '@angular/router';
 
 import { CartPageRoutingModule } from './cart-routing.module';
 import { CartPage } from './cart.page';
+import { BackButtonComponentModule } from '../../shared/components/back-button/back-button.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule,
-    CartPageRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, RouterModule, CartPageRoutingModule, BackButtonComponentModule],
   declarations: [CartPage]
 })
 export class CartPageModule { }

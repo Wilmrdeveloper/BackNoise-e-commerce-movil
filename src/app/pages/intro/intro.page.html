@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true" [scrollY]="false">
+  <div class="intro-wrapper" [class.loaded]="!isLoading">
+
+    <div class="brand" [class.expand]="showFullName">
+      <span class="short">BN</span>
+      <span class="full">BlackNoise</span>
+    </div>
+
+    <div class="button-area">
+      <ion-button *ngIf="showButton" expand="block" class="start-button" (click)="goToLogin()">
+        Empezar
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

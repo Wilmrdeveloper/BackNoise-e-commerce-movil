@@ -1,45 +1,44 @@
-<ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>Carrito</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="cart-header animate-in">
+  <app-back-button fallbackRoute="/home"></app-back-button>
+  <h1>Carrito</h1>
+  <div class="spacer"></div>
+</div>
 
-<ion-content class="ion-padding">
-
+<ion-content class="ion-padding cart-page">
   <ng-container *ngIf="(items$ | async) as items">
 
-    <ion-list *ngIf="items.length > 0; else emptyCart">
-      <ion-item *ngFor="let item of items">
-        <ion-thumbnail slot="start">
+    <div class="cart-list animate-in delay-1" *ngIf="items.length > 0; else emptyCart">
+      <div class="cart-item" *ngFor="let item of items">
+        <div class="item-image">
           <img [src]="item.product.image" [alt]="item.product.name" />
-        </ion-thumbnail>
-        <ion-label>
+        </div>
+        <div class="item-info">
           <h2>{{ item.product.name }}</h2>
-          <p>${{ item.product.price.toFixed(2) }} x {{ item.quantity }}</p>
-        </ion-label>
-        <ion-button fill="clear" color="danger" slot="end" (click)="removeItem(item.product.id)">
-          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-list>
+          <p>${{ item.product.price | number:'1.0-0' }}</p>
+        </div>
+        <div class="qty-control">
+          <button (click)="decrease(item.product.id)">−</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increase(item.product.id)">+</button>
+        </div>
+      </div>
+    </div>
 
-    <div class="cart-summary" *ngIf="items.length > 0">
-      <h2>Total: ${{ getTotal().toFixed(2) }}</h2>
-      <ion-button expand="block" (click)="checkout()">
-        Finalizar compra
-      </ion-button>
+    <div class="cart-summary animate-in delay-2" *ngIf="items.length > 0">
+      <div class="total-row">
+        <span>Total</span>
+        <h2>Total: ${{ getTotal() | number:'1.0-0' }}</h2>
+      </div>
+      <button class="checkout-btn" (click)="goToCheckout()">Ir a pagar</button>
     </div>
 
   </ng-container>
 
   <ng-template #emptyCart>
-    <div class="empty-cart">
+    <div class="empty-cart animate-in">
       <ion-icon name="cart-outline"></ion-icon>
       <p>Tu carrito está vacío</p>
-      <ion-button routerLink="/catalog" fill="outline">
-        Ver catálogo
-      </ion-button>
+      <button class="catalog-btn" routerLink="/home">Ver catálogo</button>
     </div>
   </ng-template>
-
 </ion-content>

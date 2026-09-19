@@ -1,0 +1,41 @@
+<div class="favorites-header">
+  <app-back-button fallbackRoute="/home"></app-back-button>
+  <h1>Favoritos</h1>
+  <div class="spacer"></div>
+</div>
+
+<ion-content class="ion-padding">
+  <ng-container *ngIf="(items$ | async) as items">
+
+    <ion-list *ngIf="items.length > 0; else emptyFavorites">
+      <ion-item *ngFor="let product of items">
+        <ion-thumbnail slot="start">
+          <img [src]="product.image" [alt]="product.name" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ product.name }}</h2>
+          <p>${{ product.price | number:'1.0-0' }}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+             <ion-button (click)="goToDetail(product)">
+                <ion-icon name="cart-outline" slot="icon-only"></ion-icon>
+              </ion-button>
+          <ion-button (click)="remove(product)">
+            <ion-icon name="heart" color="danger" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #emptyFavorites>
+      <div class="empty-state">
+        <ion-icon name="heart-outline"></ion-icon>
+        <p>Aún no tienes favoritos</p>
+        <ion-button routerLink="/home" fill="outline">Ver catálogo</ion-button>
+      </div>
+    </ng-template>
+
+  </ng-container>
+</ion-content>
+
+<app-bottom-nav></app-bottom-nav>

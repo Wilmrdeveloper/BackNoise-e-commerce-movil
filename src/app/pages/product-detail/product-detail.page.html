@@ -1,0 +1,44 @@
+<ion-content class="detail-page" [fullscreen]="true">
+
+  <div class="detail-header animate-in">
+    <app-back-button fallbackRoute="/home"></app-back-button>
+
+    <button class="favorite-toggle" (click)="toggleFavorite()">
+      <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
+    </button>
+  </div>
+
+  <ng-container *ngIf="(product$ | async) as product; else notFound">
+
+    <div class="product-image-wrapper animate-in delay-1">
+      <img [src]="product.image" [alt]="product.name" />
+      <div class="image-fade"></div>
+    </div>
+
+    <div class="product-info animate-in delay-2">
+      <h1>{{ product.name }}</h1>
+      <p class="price">${{ product.price | number:'1.0-0' }}</p>
+      <p class="description" *ngIf="product.description">{{ product.description }}</p>
+
+      <h3 class="sizes-title">Talla</h3>
+      <div class="sizes-row">
+        <button *ngFor="let size of product.sizes" class="size-chip" [class.selected]="selectedSize === size"
+          (click)="selectSize(size)">
+          {{ size }}
+        </button>
+      </div>
+
+      <button class="buy-button" (click)="addToCart()">
+        Comprar
+      </button>
+    </div>
+
+  </ng-container>
+
+  <ng-template #notFound>
+    <div class="not-found animate-in">
+      <p>Producto no encontrado.</p>
+    </div>
+  </ng-template>
+
+</ion-content>
